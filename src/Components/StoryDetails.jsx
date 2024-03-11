@@ -1,35 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 
-const StoryDetails = () => {
-  const { id } = useParams();
-  const [story, setStory] = useState(null);
+import React from 'react'
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    try {
-      const response = await fetch(`https://child.onrender.com/api/sciencefiction/${id}`);
-      const data = await response.json();
-      setStory(data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
-
+const StoryDetails = ({ title,img}) => { 
+  console.log(title)
   return (
-    <div className="story-details">
-      {story && (
-        <div>
-          <h2>{story.title}</h2>
-          <p>Author: {story.author}</p>
-          <p>{story.content}</p>
-        </div>
-      )}
-    </div>
-  );
-};
+    <>
 
-export default StoryDetails;
+<div class="col-12 mt-3" style={{ height: '400px', width: '250px', float: 'left', overflow: 'hidden' }}>
+  
+  <div class="card d-inline-block my-3 mx-2 px-2 py-2" style={{ maxWidth: '345px', marginRight: '120px',marginLeft:'260px', overflow: 'auto' }}> 
+    <img src={`https://ik.imagekit.io/dev24/${img}`} style={{ width: '100%' }} />
+    <div class="card-body">
+      <h5 class="card-title">{title}</h5> 
+      <button class="btn btn-success" style={{ marginLeft: '100px' }}>New</button>
+    </div>
+  </div> 
+</div>
+
+
+                      
+
+
+    
+    </>
+  )
+}
+
+export default StoryDetails 
+
+
